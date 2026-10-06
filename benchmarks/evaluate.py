@@ -1,7 +1,7 @@
-"""四类算例的独立评测入口，规则移植自 HL/*/evaluation/locked/*_io.py。
+"""Evaluate routing instances with independent feasibility and objective checks.
 
-仅在显式指定算例、套件或全部算例时求解。每例运行三遍，逐次保存完整解。
-每个实例的可行性和目标值均在此独立复算，不采用 solver 自报值。
+Run each selected instance three times and save complete solutions.
+Existing results for the same label and selected instances are overwritten.
 """
 
 from __future__ import annotations
@@ -385,29 +385,9 @@ EVALUATORS = {"tsp": tsp, "cvrp": cvrp, "pctsp": pctsp, "vrptw": vrptw}
 REPEATS = 3
 
 
-def detail_path(model: str, problem: str, suite: str, instance: str, repeat: int,
-                legacy: bool = False) -> Path:
-    """Run file of one (model, problem, instance, repeat); the model is the folder.
-
-    ``legacy`` addresses the pre-model layout (results/details/<problem>/...), which
-    only ever held the default ``<problem>_solver`` rows.
-    """
-    if legacy:
-        return RESULTS / "details" / problem / suite / instance / f"run_{repeat}.json"
+def detail_path(model: str, problem: str, suite: str, instance: str, repeat: int) -> Path:
+    """Run file of one (model, problem, instance, repeat); the model is the folder."""
     return RESULTS / "details" / model / problem / suite / instance / f"run_{repeat}.json"
-
-
-def existing_detail(model: str, problem: str, suite: str, instance: str,
-                    repeat: int) -> Path | None:
-    """A run already done, in either layout, still counts as done."""
-    current = detail_path(model, problem, suite, instance, repeat)
-    if current.is_file():
-        return current
-    legacy = detail_path(model, problem, suite, instance, repeat, legacy=True)
-    if (model == f"{problem}_solver" and legacy.is_file()
-            and json.loads(legacy.read_text(encoding="utf-8")).get("model") == model):
-        return legacy
-    return None
 
 
 def write_json(path: Path, payload: dict) -> None:
@@ -432,10 +412,31 @@ def write_csv(path: Path, columns: tuple[str, ...], rows: list[dict]) -> None:
         print(f"{path.name} is in use; wrote {latest.name}", flush=True)
 
 
+TIME_SCOPE = "loading_solving_validation"
+
+
+def timed_evaluation(problem: str, path: Path) -> dict:
+    """Measure input loading through independently verified solution output.
+
+    Warmup and result serialization are outside this boundary in both launchers.
+    """
+    started = time.perf_counter()
+    try:
+        result = EVALUATORS[problem](path)
+    except Exception as exc:
+        result = {"valid": False, "error": f"{type(exc).__name__}: {exc}",
+                  "objective": None, "solution": None}
+    elapsed = time.perf_counter() - started
+    return {**result, "time_s": elapsed, "evaluation_time_s": elapsed,
+            "time_scope": TIME_SCOPE}
+
+
 def write_summary() -> None:
+    from benchmarks.export_csv import normalize_run
+
     groups: dict[tuple[str, str, str, int], list[dict]] = defaultdict(list)
     for path in (RESULTS / "details").rglob("run_*.json"):
-        row = json.loads(path.read_text(encoding="utf-8"))
+        row = normalize_run(json.loads(path.read_text(encoding="utf-8")), path)
         groups[(row["model"], row["problem"], row["suite"], row["scale"])].append(row)
     # 期望次数按 manifest 的算例数算，因此同一算例集下的多个模型可以并列汇总。
     manifest_runs: dict[tuple[str, str, int], int] = defaultdict(int)
@@ -445,14 +446,13 @@ def write_summary() -> None:
     columns = ("model", "problem", "suite", "scale", "avg_score", "mean_gap", "mean_time_s",
                "completed_runs", "valid_runs", "expected_runs")
     summary_rows = []
-    active_problems = {key[1] for key in groups}
     keys = set(groups)
     for key in sorted(keys):
         rows = groups[key]
-        valid = [row for row in rows if row["valid"] and row["score"] is not None]
+        valid = [row for row in rows if row["valid"] and row["obj"] is not None]
         gaps = [row["gap"] for row in valid if row["gap"] is not None]
         summary_rows.append(dict(zip(columns[:4], key, strict=True)) | {
-            "avg_score": statistics.mean(row["score"] for row in valid) if valid else "",
+            "avg_score": statistics.mean(row["obj"] for row in valid) if valid else "",
             "mean_gap": statistics.mean(gaps) if gaps else "",
             "mean_time_s": statistics.mean(row["time_s"] for row in rows) if rows else "",
             "completed_runs": len(rows), "valid_runs": len(valid),
@@ -470,14 +470,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--problem", required=True, choices=PROBLEMS)
     selection = parser.add_mutually_exclusive_group(required=True)
-    selection.add_argument("--instance", action="append", help="算例名，可重复指定")
-    selection.add_argument("--suite", help="数据集名称，例如 uniform")
-    selection.add_argument("--all", action="store_true", help="运行全部算例")
-    parser.add_argument("--scale", type=int, help="只运行指定节点规模")
-    parser.add_argument("--solver", help=f"求解器模块名，默认 {DEFAULT_SOLVER}；"
-                                         "对照其它实现时指定模块名")
-    parser.add_argument("--model", help="结果里的模型标签，默认用求解器模块名；"
-                                        "重跑同一求解器到新硬件时用它区分")
+    selection.add_argument("--instance", action="append", help="instance name; repeat to select several")
+    selection.add_argument("--suite", help="suite name, for example uniform")
+    selection.add_argument("--all", action="store_true", help="evaluate all instances")
+    parser.add_argument("--scale", type=int, help="filter by instance size")
+    parser.add_argument("--solver", help=f"solver module to evaluate (default: {DEFAULT_SOLVER})")
+    parser.add_argument("--model", help="result label (default: solver module name); use a new label to preserve earlier runs")
     args = parser.parse_args()
 
     model = args.model or args.solver or DEFAULT_SOLVER
@@ -501,47 +499,30 @@ def main() -> None:
     if missing:
         parser.error(f"unknown instances: {', '.join(missing)}")
     refs = references(args.problem)
-    pending = [name for name in names if any(
-        existing_detail(model, args.problem, entries[name]["suite"], name, repeat) is None
-        for repeat in range(1, REPEATS + 1))]
-    if pending:
+    if names:
         # 首次 numba 编译不计入任何一次正式计时；预热结果不落盘。
-        print(f"warmup: {pending[0]}", flush=True)
-        EVALUATORS[args.problem](entries[pending[0]]["path"])
+        print(f"warmup: {names[0]}", flush=True)
+        EVALUATORS[args.problem](entries[names[0]]["path"])
+    failed = False
     for index, name in enumerate(names):
         item = entries[name]
         for repeat in range(1, REPEATS + 1):
-            done = existing_detail(model, args.problem, item["suite"], name, repeat)
-            if done is not None:
-                print(f"skip existing: {name} run {repeat}", flush=True)
-                continue
             output = detail_path(model, args.problem, item["suite"], name, repeat)
-            started = time.perf_counter()
-            try:
-                result = EVALUATORS[args.problem](item["path"])
-            except Exception as exc:
-                result = {"valid": False, "error": f"{type(exc).__name__}: {exc}",
-                          "objective": None, "solution": None}
-            elapsed = time.perf_counter() - started
+            result = timed_evaluation(args.problem, item["path"])
             reference = reference_fields(refs.get(name), result["objective"])
             row = {"model": model, "problem": args.problem,
                    "suite": item["suite"], "scale": item["scale"], "instance": name,
-                   "repeat": repeat, "score": result["objective"],
-                   "gap": reference["gap_vs_reference_pct"], "time_s": elapsed,
+                   "repeat": repeat, "score": result["objective"], "obj": result["objective"],
+                   "gap": reference["gap_vs_reference_pct"],
                    **result, **reference}
             write_json(output, row)
+            failed = failed or not row["valid"]
             print(f"{name} run {repeat}/{REPEATS}: "
                   f"{'valid' if row['valid'] else 'INVALID'}; score={row['score']}; "
-                  f"time={elapsed:.2f}s", flush=True)
+                  f"time={row['time_s']:.2f}s", flush=True)
         if index + 1 == len(names) or entries[names[index + 1]]["scale"] != item["scale"]:
             write_summary()
-    failed = False
-    for name in names:
-        for repeat in range(1, REPEATS + 1):
-            done = existing_detail(model, args.problem, entries[name]["suite"], name, repeat)
-            if done is None or not json.loads(done.read_text(encoding="utf-8"))["valid"]:
-                failed = True
-    print(f"saved: {RESULTS / 'summary.csv'}; details: {RESULTS / 'details' / args.problem}")
+    print(f"saved: {RESULTS / 'summary.csv'}; details: {RESULTS / 'details' / model / args.problem}")
     if failed:
         raise SystemExit(1)
 

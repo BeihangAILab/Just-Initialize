@@ -31,7 +31,10 @@ def detect_problem(path: str | Path) -> str:
 
 
 def _section(lines: list[str], start: str, end: str) -> list[str]:
-    return [line for line in lines[lines.index(start) + 1:lines.index(end)] if line]
+    start_index = lines.index(start) + 1
+    # Public TSPLIB files sometimes end without an explicit EOF marker.
+    end_index = len(lines) if end == "EOF" and end not in lines else lines.index(end, start_index)
+    return [line for line in lines[start_index:end_index] if line]
 
 
 def read_instance(path: str | Path):

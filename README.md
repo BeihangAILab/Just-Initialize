@@ -1,88 +1,263 @@
-# Just Initialize (JI)
+# Just Initialize: A Training-Free Initialization Component for Large-Scale Routing Optimization
 
-Just Initialize solves large-scale routing problems through a shared four-stage
-pipeline: **compress → solve → restore → optimize**. It supports the traveling
-salesman problem (TSP), capacitated vehicle routing problem (CVRP),
-prize-collecting TSP (PCTSP), and vehicle routing with time windows (VRPTW).
+This repository contains the implementation and benchmark materials for **Just Initialize (JI)**, a training-free initialization framework for large-scale routing problems. It supports the **Traveling Salesman Problem (TSP)**, **Capacitated Vehicle Routing Problem (CVRP)**, **Prize-Collecting TSP (PCTSP)**, and **Vehicle Routing Problem with Time Windows (VRPTW)**.
 
-This repository contains the solver, deterministic instance generators, reference
-values, and independent evaluation programs from the paper supplementary material.
-Large generated instances and experiment outputs are not included.
+## Introduction
 
-## Repository structure
+A useful starting solution can substantially reduce the work required by downstream optimization. JI compresses a routing instance into a compact surrogate space, searches for a promising global structure, and recovers an initialization in the original space. Lightweight, problem-specific refinement then improves this initialization.
+
+![Just Initialize: initialization followed by micro refinement](assets/intro.png)
+
+### Highlights
+
+- **Training-free:** runs directly on an instance without model training or pretrained weights.
+- **Four routing problems:** a shared pipeline combines common search and recovery mechanisms with problem-specific constraints and refinement operators.
+- **Downstream-guided search:** compact candidates are assessed by their objective after recovery and bounded original-space refinement.
+- **Structure-aware recovery:** geometric and sequence consistency guide feasible recovery through Boltzmann sampling.
+- **Large-scale benchmarks:** deterministic synthetic suites and public library instances cover scales up to 100,000 nodes.
+
+## Framework
+
+![Overview of the Just Initialize framework](assets/overview.png)
+
+The implementation exposes four stages:
+
+1. **Compress:** form compact units while retaining the information needed to recover original nodes.
+2. **Solve:** construct and improve a compact plan. A surrogate objective shortlists candidates; recovered and refined objectives guide acceptance.
+3. **Restore:** generate feasible original-space candidates and sample using their structural consistency scores.
+4. **Optimize:** apply the problem-specific micro refinement to the recovered initialization.
+
+The shared implementation lives in `src/core/`. Each problem implements its compression and final refinement through the interface in `src/problems/base.py`.
+
+| Problem | Compression | Final refinement |
+|---|---|---|
+| TSP | Greedy path fragments | Iterated local search with 2-opt, Or-opt, and 3-opt |
+| CVRP | Clarke–Wright routes split into fragments | Inter-route exchange and 2-opt |
+| PCTSP | Spatial partitions | Spatial 2-opt and node insertion/removal |
+| VRPTW | Spatial and temporal grouping of feasible routes | Feasible 2-opt, relocate, tail exchange, and route elimination |
+
+## Repository Structure
 
 ```text
 JI-main/
+├── README.md
+├── pyproject.toml              # Package metadata and dependencies
+├── requirements.txt            # Pinned core dependency versions
+├── requirements-data.txt       # Core versions plus optional TSP data generation
+├── assets/
+│   ├── intro.png
+│   └── overview.png
 ├── src/
-│   ├── __init__.py               # Public API exports
-│   ├── api.py                    # Public solver entry points
-│   ├── io.py                     # Unified instance reader
-│   ├── core/
-│   │   ├── representation.py     # Compact units, plans and problem specifications
-│   │   ├── oracle.py             # Compact-space feasibility and objectives
-│   │   ├── geometry.py           # Compiled portal geometry and compact costs
-│   │   ├── refinement.py         # Move-bounded downstream evaluation
-│   │   ├── recovery.py           # Structural consistency scoring and sampling
-│   │   └── pipeline.py           # Shared construction and downstream-guided search
-│   └── problems/
-│       ├── base.py               # Compression and optimization interface
+│   ├── __init__.py             # Public API exports
+│   ├── api.py                  # Solver entry points
+│   ├── io.py                   # Instance detection and loading
+│   ├── core/                   # Shared compact search and recovery
+│   │   ├── representation.py
+│   │   ├── geometry.py
+│   │   ├── oracle.py
+│   │   ├── pipeline.py
+│   │   ├── recovery.py
+│   │   └── refinement.py
+│   └── problems/               # Problem interface and implementations
+│       ├── base.py
 │       ├── tsp.py
 │       ├── cvrp.py
 │       ├── pctsp.py
 │       └── vrptw.py
 ├── benchmarks/
-│   ├── evaluate.py               # Independent validation and sequential evaluation
-│   ├── run_parallel.py           # Parallel evaluation with resumable output
-│   ├── compare_mechanisms.py     # Fixed panel for solver comparisons
-│   └── validate_mechanisms.py    # Mechanism and feasibility checks
-├── data/                         # Instances, generators, seed records and references
-├── results/                      # Generated experiment output, ignored by Git
-└── pyproject.toml                # Package installation and dependencies
+│   ├── evaluate.py             # Sequential evaluation and independent validation
+│   ├── run_parallel.py         # Parallel evaluation
+│   ├── export_csv.py           # Per-run and per-instance CSV export
+│   └── smoke_test.py           # Small offline correctness checks
+├── data/
+│   └── <problem>/              # tsp, cvrp, pctsp, or vrptw
+│       ├── generate_instances.py
+│       ├── instances/          # Solver-ready instance files
+│       ├── seed/               # Seed records and generation metadata
+│       ├── bks/                # Reference objective values
+│       └── manifest.csv        # Instance index, generated by the data script
+└── results/                    # Local evaluation results, ignored by Git
 ```
+
+CVRP, PCTSP, and VRPTW generators also write floating-point source arrays to `data/<problem>/canonical/` before exporting solver-ready instances.
 
 ## Installation
 
-Python 3.10 or later is required. Run commands from the repository root:
+Run all commands below from the repository root, preferably in a virtual environment.
+Create and activate one before installing:
+
+```powershell
+# Windows PowerShell
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
 ```bash
+# Linux / macOS
+python3.13 -m venv .venv
+source .venv/bin/activate
+```
+
+If PowerShell blocks activation, use `.\.venv\Scripts\python.exe` in place of
+`python` in the commands below; activation is not required.
+
+The pinned dependencies in `requirements.txt` require **Python 3.11 or later**;
+the verified core environment is **Windows / CPython 3.13.1**.
+
+| Dependency | Pinned version | Purpose |
+|---|---|---|
+| NumPy | 2.2.4 | Numerical arrays |
+| SciPy | 1.16.0 | Spatial search |
+| Numba | 0.65.1 | CPU compilation |
+| llvmlite | 0.47.0 | Numba compiler dependency |
+| PyTorch (optional) | 2.9.0 | TSP data generation |
+
+Install the pinned core dependencies and the package:
+
+```bash
+python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
-The solver requires NumPy, SciPy, and Numba. TSP instance generation additionally
-uses PyTorch to reproduce the sampling distributions:
+The solver uses **NumPy, SciPy, and Numba** and runs on the CPU. To regenerate the TSP datasets, install the optional **PyTorch** dependency:
 
 ```bash
-python -m pip install -e ".[data]"
+python -m pip install -r requirements-data.txt
 ```
 
-## Quick start
+PyTorch is not needed to solve instances or generate the CVRP, PCTSP, and VRPTW
+datasets. The data generator uses CPU tensors and does not require CUDA.
+The optional requirements file was verified with PyTorch `2.9.0+cpu` in the
+fresh Windows environment.
 
-The bundled TSPLIB and CVRPLIB instances can be evaluated immediately:
+These files record dependency versions, rather than a full platform-specific lock.
+The package itself declares Python >=3.10: on Python 3.10, use
+`python -m pip install -e .` (or `python -m pip install -e ".[data]"` for TSP
+generation) to resolve compatible versions instead of the pinned files above.
+That alternative environment has not been verified here.
+
+Fresh-environment validation on Windows / CPython 3.13.1 covered installation of
+the pinned core dependencies and editable package, `pip check`, both evaluation
+CLI help commands, the 100-node Python API example, and actual solving of TSP,
+CVRP, PCTSP, and VRPTW instances. The optional data dependencies also installed
+successfully; all four TSP generation distributions passed small-instance checks
+with repeatable seeds. This was a functional installation check, not
+a rerun of the full benchmark. Linux and macOS installation have not been
+verified here.
+
+## Quick Start
+
+Evaluate a bundled public benchmark instance:
 
 ```bash
 python benchmarks/evaluate.py --problem tsp --instance pr1002
 python benchmarks/evaluate.py --problem cvrp --instance X-n1001-k43
 ```
 
-Generate synthetic instances before evaluating their suites:
+Evaluate a uniform 10k suite:
+
+```bash
+python benchmarks/evaluate.py --problem tsp --suite uniform --scale 10000
+python benchmarks/evaluate.py --problem cvrp --suite uniform --scale 10000
+python benchmarks/evaluate.py --problem pctsp --suite uniform --scale 10000
+python benchmarks/evaluate.py --problem vrptw --suite uniform --scale 10000
+```
+
+Each selected instance is run **three times**, with the complete solution and independently checked objective saved for every run. If synthetic instances are absent, generate them as described below first.
+
+## Datasets
+
+| Problem | Suite | Sizes | Instances |
+|---|---|---|---:|
+| TSP | Uniform | 5k, 10k, 20k, 50k, 100k; 16 per size | 80 |
+| TSP | Clustered, explosion, implosion | 10k and 100k; 16 per distribution and size | 96 |
+| TSP | TSPLIB | 32 selected public instances | 32 |
+| CVRP | Uniform | 5k, 10k, 20k, 50k, 100k; 16 per size | 80 |
+| CVRP | CVRPLIB | 11 selected public instances | 11 |
+| PCTSP | Uniform | 2k, 5k, 10k: 16 per size; 20k: 8 | 56 |
+| VRPTW | Uniform | 2k, 5k, 10k: 16 per size; 20k: 8 | 56 |
+
+The complete benchmark contains **411 instances**. TSP sizes count cities; CVRP, PCTSP, and VRPTW synthetic sizes count customers, with the depot stored separately or as an additional node.
+
+### Data sources
+
+- **Public TSP instances:** the 32 bundled instances are from
+  [TSPLIB](https://wwwproxy.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/).
+  Their reference objectives are recorded in `data/tsp/bks/tsplib_bks.json`.
+- **Public CVRP instances:** the 11 bundled instances are from
+  [CVRPLIB](https://galgos.inf.puc-rio.br/cvrplib/en/instances/1).
+  `data/cvrp/bks/cvrplib_reference.json` records the individual download URLs,
+  retrieval date, reference solution values, and file hashes.
+- **Synthetic TSP:** uniform points are generated locally. The clustered,
+  explosion, and implosion distributions follow the official
+  [INViT implementation](https://github.com/Kasumigaoka-Utaha/INViT), with reference
+  commit `f11a6024870036f5d7a7826e0955bd4e6dd350dd` recorded in the generator.
+  Coordinates are normalized and exported on a 1,000,000-scale integer grid.
+- **Synthetic CVRP and PCTSP:** generated locally by the supplied scripts;
+  instance sizes, distributions, constraints, and seeds are recorded under
+  `data/<problem>/seed/`.
+- **Synthetic VRPTW:** generated locally using the time-window convention of
+  [MVMoE](https://github.com/RoyalSkye/Routing-MVMoE), with depot horizon `[0, 3]`
+  and a feasibility rejection step. Coordinates, time windows, and service times
+  are exported at the same integer scale.
+
+Synthetic suites are generated instances, not downloaded copies of the public
+libraries. Reference objectives and their available solver/protocol metadata live
+under `data/<problem>/bks/`; empirical reference values are not claimed as optima.
+
+### Generate synthetic instances
+
+Synthetic instance files may be omitted from a Git checkout or a size-limited supplementary archive. The generators and seed records are provided to regenerate them under `data/<problem>/instances/`:
 
 ```bash
 python data/tsp/generate_instances.py
 python data/cvrp/generate_instances.py
 python data/pctsp/generate_instances.py
-python data/vrptw/generate_instances.py --sizes 2000 5000 10000 20000
-
-python benchmarks/evaluate.py --problem vrptw --suite uniform --scale 2000
-python benchmarks/run_parallel.py --problem tsp --workers 8
+python data/vrptw/generate_instances.py
 ```
 
-Full generation includes instances with up to 100,000 nodes and can consume
-hundreds of megabytes. The synthetic suites contain 80 TSP uniform instances,
-96 TSP extended instances, 80 CVRP instances, and 56 instances each for PCTSP
-and VRPTW. TSP extended includes clustered, explosion and implosion distributions
-at 10k and 100k scales, with 16 instances per distribution and scale.
+These commands regenerate the synthetic suites and their manifests. Public TSPLIB and CVRPLIB files are supplied separately in their respective `instances/` subdirectories and are not generated by these scripts. Full generation includes 100k-node instances and requires sufficient disk space.
+
+VRPTW also supports generating a selected size while retaining other manifest entries:
+
+```bash
+python data/vrptw/generate_instances.py --sizes 2000
+```
+
+## Full Evaluation
+
+Run all suites for each problem sequentially:
+
+```bash
+python benchmarks/evaluate.py --problem tsp --all --model ji_full
+python benchmarks/evaluate.py --problem cvrp --all --model ji_full
+python benchmarks/evaluate.py --problem pctsp --all --model ji_full
+python benchmarks/evaluate.py --problem vrptw --all --model ji_full
+```
+
+Use sequential evaluation for runtime comparisons. For higher throughput, evaluate a complete problem in parallel:
+
+```bash
+python benchmarks/run_parallel.py --problem tsp --workers 8 --model ji_parallel
+```
+
+Parallel workers contend for CPU resources, so their timings should be reported separately from sequential timings.
+
+| Option | Purpose |
+|---|---|
+| `--problem` | Choose `tsp`, `cvrp`, `pctsp`, or `vrptw` |
+| `--instance` | Select an instance by its name; repeat to select several |
+| `--suite` | Select `uniform`, a TSP distribution, `tsplib`, or `cvrplib`, as applicable |
+| `--scale` | Filter the selected instances by benchmark size |
+| `--all` | Select all instances for the problem |
+| `--model` | Set the result folder label; the default is `src` |
+| `--solver` | Load an alternative module with the same solver and reader API |
+
+The selection options `--instance`, `--suite`, `--scale`, and `--all` belong to `evaluate.py`. The parallel launcher runs the complete problem and additionally accepts `--workers`. Both programs rerun all three repetitions for every selected instance and overwrite its existing run files under the same result label. There is no automatic resume or skip-existing behavior. **Use a new `--model` label to preserve previous results when changing code, settings, or hardware.** Results for unselected instances remain in place and are included in the summaries.
 
 ## Python API
+
+Solve a TSP directly from coordinates:
 
 ```python
 import numpy as np
@@ -90,153 +265,83 @@ import src as ji
 
 points = np.random.default_rng(0).integers(0, 10000, size=(100, 2))
 tour = ji.solve_tsp(points, seed=0)
-
-kind, problem = ji.read_instance("data/cvrp/instances/cvrplib/X-n1001-k43.vrp")
-routes = ji.solve_cvrp(problem)
 ```
 
-Public entry points are `solve_tsp`, `solve_cvrp`, `solve_problem` (PCTSP),
-`solve_vrptw`, and `solve_instance`. `read_instance` returns `(kind, problem)`.
-TSP returns a tour array; CVRP and VRPTW return lists of customer-index arrays;
-PCTSP returns a cycle beginning and ending at depot index 0. CVRP stores the
-depot separately, so its customer indices also start at 0.
+Load and solve a supported instance file:
 
-Import the public API from `src`. Problem-specific constants and algorithm helpers
-live in `src.problems.<problem>`.
+```python
+import src as ji
 
-## Method and implementation
+routes = ji.solve_instance("data/cvrp/instances/cvrplib/X-n1001-k43.vrp", seed=0)
+```
 
-Each problem module implements the interface in `problems/base.py`: compression
-returns ordered paths, source groups and recovery data; optimization refines
-restored routes using the problem-specific operators. The shared pipeline builds
-compact units, constructs and improves a plan, and restores original node indices.
-The oracle evaluates compact-space feasibility and objective values.
+To obtain the initialization before final refinement, call the stages individually:
 
-| Problem | Compression | Final refinement |
-| --- | --- | --- |
-| TSP | Greedy path fragments | ILS with 2-opt, Or-opt and 3-opt |
-| CVRP | Clarke–Wright routes split into fragments | Inter-route exchange and 2-opt |
-| PCTSP | Spatial partitions | Spatial 2-opt and node insertion/removal |
-| VRPTW | Spatial and temporal grouping of feasible routes | Feasible 2-opt, relocate and tail exchange |
+```python
+import src as ji
 
-CVRP and PCTSP may score candidate plans using downstream refinement before
-choosing a plan. VRPTW refinement uses a wall-clock budget, so execution time can
-affect its final output. The refactoring preserves the original algorithm
-parameters and operators.
+kind, problem = ji.read_instance("data/tsp/instances/tsplib/u1060.tsp")
+compact = ji.compress(kind, problem, seed=0)
+plan = ji.solve(compact, ji.Oracle(compact))
+initialization = ji.restore(plan, compact)
+solution = ji.optimize(compact, initialization, seed=0)
+```
 
-## Evaluation protocol
+The public solver functions are `solve_tsp`, `solve_cvrp`, `solve_problem` (PCTSP), `solve_vrptw`, and `solve_instance`. Returned node indices refer to the loaded problem arrays, rather than the one-based identifiers in text instance files. TSP returns a tour array; CVRP and VRPTW return lists of customer-index arrays; PCTSP returns a cycle starting and ending at depot index 0.
 
-- Each instance is evaluated three times. Existing run files are skipped.
-- Feasibility and objective values are recomputed by the evaluator rather than
-  accepted from the solver. TSP scoring follows the instance's `EUC_2D` or
-  `CEIL_2D` distance convention.
-- Sequential evaluation performs an untimed warmup before recorded runs. Parallel
-  evaluation uses the `spawn` process model and performs an untimed warmup in each
-  worker, supporting Windows and Unix platforms.
-- Objectives are tour length for TSP, total depot-inclusive route length for CVRP
-  and VRPTW, and route length plus omitted-node penalties for PCTSP.
-- The reference gap is `100 * (objective - reference) / reference`. Some references
-  are empirical upper bounds rather than proven optima.
+The unified `read_instance` API accepts `EUC_2D` text instances with the expected section delimiters; the final `EOF` marker is optional, including for bundled TSP files such as `pr1002.tsp`. The TSP evaluator also scores `CEIL_2D` library instances according to their declared distance convention, although `solve_tsp` internally uses `EUC_2D` distances.
 
-Results are written to:
+## Results and Reproducibility
+
+Each benchmark run writes a JSON file containing the complete solution, feasibility status, independently recomputed objective, reference gap, and runtime:
 
 ```text
-results/details/<model>/<problem>/<suite>/<instance>/run_<n>.json
-results/summary.csv
-results/summary/<problem>/<suite>.csv
+results/details/<model>/<problem>/<suite>/<instance>/run_1.json
+results/details/<model>/<problem>/<suite>/<instance>/run_2.json
+results/details/<model>/<problem>/<suite>/<instance>/run_3.json
 ```
 
-The default result label is `src`. Use `--model` to distinguish runs on different
-hardware or to reuse an earlier result label. To compare a
-compatible implementation, pass its importable module name with `--solver`.
-The evaluator uses that module for both solving and problem loading, so it must
-provide the same public problem classes, readers and solver signatures.
+The evaluators additionally generate `results/summary.csv` and `results/summary/<problem>/<suite>.csv`, grouped by model, problem, suite, and scale. Their aggregate fields are `avg_score`, `mean_gap`, and `mean_time_s`.
 
-The unified `read_instance` API currently accepts `EUC_2D`; the independent TSP
-evaluator also scores `CEIL_2D` instances. Keep this distinction in mind when
-choosing an entry point.
-
-## Downstream-guided compact search and recovery
-
-Compact construction uses the surrogate routing objective. Compact improvement
-uses that objective only to shortlist feasible candidates; each accepted update
-must lower the objective **after recovery and a bounded original-space refinement**.
-All four problems use this downstream evaluation. The current fixed configuration
-uses two search rounds for TSP and four for the other problems, at most two
-shortlisted neighbors per round, and one
-refinement trajectory per candidate (`S = 1`). The existing problem-dependent
-proposal budget is distributed across these rounds. Evaluated plans are cached. Candidate evaluation (`B`) accepts at most eight
-improving 2-opt moves with 16 nearest neighbors, using rounded distances and
-checking time-window feasibility. This 2-opt stage preserves selected nodes,
-prizes and route loads; the additional VRPTW cross-route stage checks capacity
-again after changing route membership. Final refinement (`B_mu`) still invokes the
-problem-specific solver. TSP checks a two-second deadline between ILS basins;
-VRPTW shares a two-second deadline across restoration and both restarts. These
-are cooperative deadlines: a running operator may finish after the deadline.
-
-Recovery preserves the selected compact units, their route membership and order.
-It considers cyclic rotations and reversals of each stored local path, retains
-low-discrepancy boundary pairs, and constructs up to four distinct feasible whole
-solutions. Each alternate candidate changes one local path. The score is
-`g = -0.5 * (L_geo + L_seq)`, using the normalized boundary and connection
-errors and the preserved local adjacencies from the paper. Because routing
-costs are symmetric, local edge sets are undirected. Capacity and time-window
-violations are excluded before sampling. A Boltzmann distribution with
-`tau = 0.01` selects the recovered solution. Plan-specific seeded streams make
-recovery sampling independent of evaluation order. VRPTW uses wall-clock
-refinement limits, so its refinement results may still vary across runs.
-
-These mechanisms change search behavior and runtime relative to the earlier
-implementation. Previously published results must be rerun before replacement.
-Run the behavioral and feasibility checks with:
+Export or rebuild the per-run records and per-instance statistics from the detailed JSON files:
 
 ```bash
-python benchmarks/validate_mechanisms.py
-python benchmarks/compare_mechanisms.py --solver src --model mechanism_fast_v3 --workers 1
+python benchmarks/export_csv.py
 ```
 
-The comparison panel contains the first two 5K uniform instances for TSP/CVRP
-and the first two 2K uniform instances for PCTSP/VRPTW, each repeated three times.
-It is a regression screen, not a replacement for the full paper experiments.
+This writes `results/runs.csv` and `results/instance_summary.csv` without rerunning any solver. The latter includes `obj`, `avggap`, `avgtime`, repetition counts, completeness, and standard deviations. Objectives and gaps are averaged over valid runs; runtime includes all recorded attempts. `complete` checks whether repetitions 1, 2, and 3 are present; `valid_runs` separately reports solution validity. CSVs use UTF-8 with a BOM for spreadsheet compatibility.
 
-Recovery boundary ranking, sequence discrepancy and feasibility checks use
-Numba kernels with disk caching. Unchanged unit boundaries are cached within a
-compressed instance. Portal distance matrices and compact route costs also use
-compiled kernels. The reported timings exclude first-use compilation through
-warmup; cold-start latency should be measured separately when deploying a service.
-The comparison panel defaults to sequential execution to avoid timing interference.
-
-CVRP Clarke--Wright construction uses a compiled linked-path merge kernel.
-Compact CVRP route merges evaluate savings from the two route endpoints and
-cached route costs, avoiding a full route scan for each orientation pair.
-
-VRPTW candidate evaluation additionally evaluates at most 32 neighboring route
-pairs and accepts at most eight improving cross-route relocations or tail
-exchanges. Pair priorities use predicted relocation savings; each accepted move
-is checked against exact route capacity, time-window feasibility and rounded
-route cost. Its final shared two-second refinement budget remains unchanged.
-CVRP and PCTSP retain their previous parameters and evaluation path.
-
-
-VRPTW final refinement also uses compiled route elimination and route-pair batches.
-Route elimination must strictly reduce total distance. Exact prefix costs, loads,
-forward departure times and backward latest arrivals accelerate feasible tail
-exchanges; relocate checks unique candidate insertion positions and simulates
-only promising moves. The final two-second budget is unchanged, and its remaining
-time is allocated across two search orders. These changes do not alter TSP, CVRP,
-PCTSP, or the shared downstream-scoring and Boltzmann-recovery mechanisms.
-
-Validate the exact move kernels and run a warmed, sequential uniform 10K evaluation:
+To export a selected problem or model while preserving the full exports, use a separate output directory:
 
 ```bash
-python benchmarks/validate_vrptw_refinement.py
-python benchmarks/run_uniform10k_once.py --problem vrptw --model vrptw_uniform10k
+python benchmarks/export_csv.py --problem vrptw --output results/vrptw_export
 ```
 
-The VRPTW quality-repair run at solver commit `695e08c` evaluated all 16 uniform
-10K instances once: average gap **4.3797%** and average solver time **3.4049 s**,
-with all solutions feasible. The paper reports 4.43% and 9.30 s. The experiment
-excludes cold JIT compilation; hardware and repetition counts differ from the
-paper. This single run does not establish a repeatable quality or speed advantage.
-The historical experiment files were cleared after validation. Running the
-benchmark again generates summaries and full solutions under `results/`.
+Duplicate records and malformed inputs cause an error rather than silent double counting. Results are ignored by Git and may be absent from a fresh checkout.
+
+Objectives are tour length for TSP, depot-inclusive total route length for CVRP and VRPTW, and route length plus omitted-node penalties for PCTSP. The reference gap is:
+
+```text
+gap (%) = 100 * (objective - reference) / reference
+```
+
+Reference records live in `data/<problem>/bks/`. Some references are empirical best-known values or upper bounds, rather than proven optima.
+
+All current benchmark summaries and CSV exports use **end-to-end runtime**: instance loading, all four solver stages, and independent feasibility/objective validation. The timer starts immediately before the evaluator reads the instance and stops when it returns the checked solution. Reference lookup, result serialization, process startup, and warmup are outside this per-instance boundary. Both evaluators perform an untimed instance warmup; parallel evaluation warms up each worker. First-use compilation and startup latency should be reported separately from warmed timings.
+
+New JSON records set `time_s = evaluation_time_s` and `time_scope = "loading_solving_validation"`. Historical full-experiment JSON files remain unchanged: they used `time_s` for solver-only runtime and `evaluation_time_s` for end-to-end runtime. Summary generation and CSV export prefer the historical `evaluation_time_s`; the exporter retains the old solver-only measurement in `solver_time_s`. Thus exported `avgtime` always means end-to-end runtime, including when old and new records are read together.
+
+Fixed seeds control generation and recovery sampling. Time-limited refinement can produce different solutions across repeated runs or machines, even with the same seed. A refinement budget limits that stage, not the entire pipeline. For comparisons, record the code revision, dependencies, hardware, execution mode, timing definition, and all three runs.
+
+The three repetitions use the same default solver seed (`0`); they are repeated runs of the same setting, not experiments with three different random seeds.
+
+
+## Smoke Test
+
+Run a small offline check before a full experiment:
+
+```bash
+python benchmarks/smoke_test.py
+```
+
+The check creates temporary 65-node fixtures for all four problems and exercises instance loading, solving, independent validation, failed-run recording, shared sequential/worker timing, and CSV statistics. It also checks historical timing conversion, missing repetitions, and duplicate-record rejection. It finishes with `SMOKE PASS` and never modifies the datasets or saved experiment results. Initial Numba compilation can make the first invocation slower. This is a functional check, not a full quality or performance benchmark.
