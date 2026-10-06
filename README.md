@@ -162,12 +162,6 @@ python benchmarks/export_csv.py --model ji_full --output results/ji_full_export
 
 Detailed records live under `results/details/<model>/<problem>/<suite>/<instance>/run_*.json`. The evaluator writes aggregate summaries; the exporter produces per-run and per-instance CSVs without rerunning the solver. Results are ignored by Git.
 
-### 4. Compare with the Paper
-
-The commands above evaluate the current implementation on the repository suites. Main comparison datasets correspond to Tables 1–2; other paper experiments need additional configurations or data. See [paper coverage and reproduction limits](docs/reproducibility.md#paper-results-and-repository-coverage) before interpreting these commands as a complete paper reproduction.
-
-For comparisons, record the code revision, dependencies, hardware, execution mode, and timing definition. The three repetitions use the same default solver seed (`0`); time-limited refinement can still vary between runs. Full protocol details are in [Experiment Reproduction](docs/reproducibility.md).
-
 ## Repository Structure
 
 ```text
