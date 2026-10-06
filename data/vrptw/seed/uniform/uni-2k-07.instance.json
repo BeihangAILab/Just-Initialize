@@ -1,0 +1,25 @@
+{
+  "generator": "generate_instances.py",
+  "generator_version": "1.0",
+  "base_seed": 20260909,
+  "coordinate_scale": 1000000,
+  "time_window_protocol": "mvmoe_solomon_like",
+  "instance": "uni-2k-07",
+  "dimension": 2001,
+  "customers": 2000,
+  "capacity": 500,
+  "seed": 27454930,
+  "coordinate_distribution": "uniform_[0,1]^2",
+  "demand_distribution": "uniform_integer_[1,9]",
+  "service_time": 0.2,
+  "depot_time_window": [
+    0.0,
+    3.0
+  ],
+  "canonical_path": "canonical/uniform/uni-2k-07.npz",
+  "canonical_sha256": "ed3a4e221006ec87840fe642ff2c5a6d374b01bd65481218c76092d44151fe56",
+  "path": "instances/uniform/uni-2k-07.vrp",
+  "bytes": 111539,
+  "sha256": "bf76a6d52362dd99cc2e6af0fbee95ff60f9e652b6b6772140d5cbb06b6be9d7",
+  "feasibility_eps": 1e-05
+}

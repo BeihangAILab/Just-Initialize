@@ -1,0 +1,21 @@
+{
+  "name": "tsp5000_uniform_03",
+  "dimension": 5000,
+  "distribution": "uniform",
+  "seed": 425003,
+  "edge_weight_type": "EUC_2D",
+  "coordinate_grid": 1000000,
+  "coordinate_min": [
+    0,
+    0
+  ],
+  "coordinate_max": [
+    1000000,
+    999749
+  ],
+  "generator_family": "iid uniform",
+  "invit_reference": null,
+  "parameters": {},
+  "torch_version": "2.9.0+cu128",
+  "numpy_version": "2.2.4"
+}

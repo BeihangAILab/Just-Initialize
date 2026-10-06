@@ -1,0 +1,298 @@
+{
+  "schema_version": 2,
+  "dataset": "tsplib",
+  "status": "complete",
+  "expected_instance_count": 32,
+  "completed_instance_count": 32,
+  "missing_instances": [],
+  "instances": [
+    {
+      "instance": "pr2392",
+      "dimension": 2392,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 378032,
+      "reference_type": "proven_optimal",
+      "upper_bound": 378032,
+      "lower_bound": 378032
+    },
+    {
+      "instance": "rl5915",
+      "dimension": 5915,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 565530,
+      "reference_type": "proven_optimal",
+      "upper_bound": 565530,
+      "lower_bound": 565530
+    },
+    {
+      "instance": "rl5934",
+      "dimension": 5934,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 556045,
+      "reference_type": "proven_optimal",
+      "upper_bound": 556045,
+      "lower_bound": 556045
+    },
+    {
+      "instance": "pla7397",
+      "dimension": 7397,
+      "edge_weight_type": "CEIL_2D",
+      "reference_value": 23260728,
+      "reference_type": "proven_optimal",
+      "upper_bound": 23260728,
+      "lower_bound": 23260728
+    },
+    {
+      "instance": "rl11849",
+      "dimension": 11849,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 923288,
+      "reference_type": "proven_optimal",
+      "upper_bound": 923288,
+      "lower_bound": 923288
+    },
+    {
+      "instance": "usa13509",
+      "dimension": 13509,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 19982859,
+      "reference_type": "proven_optimal",
+      "upper_bound": 19982859,
+      "lower_bound": 19982859
+    },
+    {
+      "instance": "brd14051",
+      "dimension": 14051,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 469385,
+      "reference_type": "proven_optimal",
+      "upper_bound": 469385,
+      "lower_bound": 469385
+    },
+    {
+      "instance": "d15112",
+      "dimension": 15112,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 1573084,
+      "reference_type": "proven_optimal",
+      "upper_bound": 1573084,
+      "lower_bound": 1573084
+    },
+    {
+      "instance": "d18512",
+      "dimension": 18512,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 645238,
+      "reference_type": "proven_optimal",
+      "upper_bound": 645238,
+      "lower_bound": 645238
+    },
+    {
+      "instance": "pla33810",
+      "dimension": 33810,
+      "edge_weight_type": "CEIL_2D",
+      "reference_value": 66048945,
+      "reference_type": "proven_optimal",
+      "upper_bound": 66048945,
+      "lower_bound": 66048945
+    },
+    {
+      "instance": "pla85900",
+      "dimension": 85900,
+      "edge_weight_type": "CEIL_2D",
+      "reference_value": 142382641,
+      "reference_type": "proven_optimal",
+      "upper_bound": 142382641,
+      "lower_bound": 142382641
+    },
+    {
+      "instance": "vm1748",
+      "dimension": 1748,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 336556,
+      "reference_type": "proven_optimal",
+      "upper_bound": 336556,
+      "lower_bound": 336556
+    },
+    {
+      "instance": "pr1002",
+      "dimension": 1002,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 259045,
+      "reference_type": "proven_optimal",
+      "upper_bound": 259045,
+      "lower_bound": 259045
+    },
+    {
+      "instance": "u2152",
+      "dimension": 2152,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 64253,
+      "reference_type": "proven_optimal",
+      "upper_bound": 64253,
+      "lower_bound": 64253
+    },
+    {
+      "instance": "pcb3038",
+      "dimension": 3038,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 137694,
+      "reference_type": "proven_optimal",
+      "upper_bound": 137694,
+      "lower_bound": 137694
+    },
+    {
+      "instance": "d2103",
+      "dimension": 2103,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 80450,
+      "reference_type": "proven_optimal",
+      "upper_bound": 80450,
+      "lower_bound": 80450
+    },
+    {
+      "instance": "pcb1173",
+      "dimension": 1173,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 56892,
+      "reference_type": "proven_optimal",
+      "upper_bound": 56892,
+      "lower_bound": 56892
+    },
+    {
+      "instance": "fnl4461",
+      "dimension": 4461,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 182566,
+      "reference_type": "proven_optimal",
+      "upper_bound": 182566,
+      "lower_bound": 182566
+    },
+    {
+      "instance": "d1291",
+      "dimension": 1291,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50801,
+      "reference_type": "proven_optimal",
+      "upper_bound": 50801,
+      "lower_bound": 50801
+    },
+    {
+      "instance": "vm1084",
+      "dimension": 1084,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 239297,
+      "reference_type": "proven_optimal",
+      "upper_bound": 239297,
+      "lower_bound": 239297
+    },
+    {
+      "instance": "u1432",
+      "dimension": 1432,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 152970,
+      "reference_type": "proven_optimal",
+      "upper_bound": 152970,
+      "lower_bound": 152970
+    },
+    {
+      "instance": "rl1889",
+      "dimension": 1889,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 316536,
+      "reference_type": "proven_optimal",
+      "upper_bound": 316536,
+      "lower_bound": 316536
+    },
+    {
+      "instance": "u1060",
+      "dimension": 1060,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 224094,
+      "reference_type": "proven_optimal",
+      "upper_bound": 224094,
+      "lower_bound": 224094
+    },
+    {
+      "instance": "fl3795",
+      "dimension": 3795,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 28772,
+      "reference_type": "proven_optimal",
+      "upper_bound": 28772,
+      "lower_bound": 28772
+    },
+    {
+      "instance": "d1655",
+      "dimension": 1655,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 62128,
+      "reference_type": "proven_optimal",
+      "upper_bound": 62128,
+      "lower_bound": 62128
+    },
+    {
+      "instance": "fl1400",
+      "dimension": 1400,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 20127,
+      "reference_type": "proven_optimal",
+      "upper_bound": 20127,
+      "lower_bound": 20127
+    },
+    {
+      "instance": "u2319",
+      "dimension": 2319,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 234256,
+      "reference_type": "proven_optimal",
+      "upper_bound": 234256,
+      "lower_bound": 234256
+    },
+    {
+      "instance": "u1817",
+      "dimension": 1817,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 57201,
+      "reference_type": "proven_optimal",
+      "upper_bound": 57201,
+      "lower_bound": 57201
+    },
+    {
+      "instance": "rl1304",
+      "dimension": 1304,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 252948,
+      "reference_type": "proven_optimal",
+      "upper_bound": 252948,
+      "lower_bound": 252948
+    },
+    {
+      "instance": "fl1577",
+      "dimension": 1577,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 22249,
+      "reference_type": "proven_optimal",
+      "upper_bound": 22249,
+      "lower_bound": 22249
+    },
+    {
+      "instance": "nrw1379",
+      "dimension": 1379,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 56638,
+      "reference_type": "proven_optimal",
+      "upper_bound": 56638,
+      "lower_bound": 56638
+    },
+    {
+      "instance": "rl1323",
+      "dimension": 1323,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 270199,
+      "reference_type": "proven_optimal",
+      "upper_bound": 270199,
+      "lower_bound": 270199
+    }
+  ]
+}

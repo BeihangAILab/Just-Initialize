@@ -1,0 +1,18 @@
+{
+  "generator": "generate_instances.py",
+  "generator_version": "1.0",
+  "base_seed": 20260909,
+  "coordinate_scale": 1000000,
+  "instance": "uni-50k-16",
+  "dimension": 50001,
+  "customers": 50000,
+  "capacity": 2000,
+  "seed": 41110957,
+  "coordinate_distribution": "uniform_[0,1]^2",
+  "demand_distribution": "uniform_integer_[1,9]",
+  "canonical_path": "canonical/uniform/uni-50k-16.npz",
+  "canonical_sha256": "206a1176564cc9cfec663264f170cb00d37ab8b8914f55c0207f1b5bcc91c419",
+  "path": "instances/uniform/uni-50k-16.vrp",
+  "bytes": 1366815,
+  "sha256": "1cb1a6184b3b9d699c09790287afbcbd1a15c6d117cc6f1fa86fc209927d5217"
+}

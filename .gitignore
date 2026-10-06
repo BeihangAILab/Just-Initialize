@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+results/*
+!results/.gitkeep
+data/**/canonical/
+build/
+dist/
+data/**/instances/uniform/
+data/**/instances/extended/
+data/**/manifest*.csv

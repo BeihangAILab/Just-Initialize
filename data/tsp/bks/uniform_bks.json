@@ -1,0 +1,732 @@
+{
+  "schema_version": 2,
+  "dataset": "uniform",
+  "artifact_retention_policy": "summary_only",
+  "artifacts_used_during_generation": true,
+  "status": "complete",
+  "expected_instance_count": 80,
+  "completed_instance_count": 80,
+  "missing_instances": [],
+  "instances": [
+    {
+      "instance": "tsp100000_uniform_01",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 226434002,
+      "reference_type": "empirical_bks",
+      "upper_bound": 226434002,
+      "lower_bound": 224878987.2
+    },
+    {
+      "instance": "tsp100000_uniform_02",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225861232,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225861232,
+      "lower_bound": 224320608.0
+    },
+    {
+      "instance": "tsp100000_uniform_03",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 226018846,
+      "reference_type": "empirical_bks",
+      "upper_bound": 226018846,
+      "lower_bound": 224439073.2
+    },
+    {
+      "instance": "tsp100000_uniform_04",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 226006726,
+      "reference_type": "empirical_bks",
+      "upper_bound": 226006726,
+      "lower_bound": 224511223.4
+    },
+    {
+      "instance": "tsp100000_uniform_05",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 226059407,
+      "reference_type": "empirical_bks",
+      "upper_bound": 226059407,
+      "lower_bound": 224472853.8
+    },
+    {
+      "instance": "tsp100000_uniform_06",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225875192,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225875192,
+      "lower_bound": 224330260.1
+    },
+    {
+      "instance": "tsp100000_uniform_07",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 226110465,
+      "reference_type": "empirical_bks",
+      "upper_bound": 226110465,
+      "lower_bound": 224562558.2
+    },
+    {
+      "instance": "tsp100000_uniform_08",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225955501,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225955501,
+      "lower_bound": 224471352.7
+    },
+    {
+      "instance": "tsp100000_uniform_09",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225909689,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225909689,
+      "lower_bound": 224318479.5
+    },
+    {
+      "instance": "tsp100000_uniform_10",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225854164,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225854164,
+      "lower_bound": 224303137.9
+    },
+    {
+      "instance": "tsp100000_uniform_11",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 226171124,
+      "reference_type": "empirical_bks",
+      "upper_bound": 226171124,
+      "lower_bound": 224618351.9
+    },
+    {
+      "instance": "tsp100000_uniform_12",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225478803,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225478803,
+      "lower_bound": 223915983.6
+    },
+    {
+      "instance": "tsp100000_uniform_13",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225833598,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225833598,
+      "lower_bound": 224230373.2
+    },
+    {
+      "instance": "tsp100000_uniform_14",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225827972,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225827972,
+      "lower_bound": 224268302.6
+    },
+    {
+      "instance": "tsp100000_uniform_15",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225822017,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225822017,
+      "lower_bound": 224292882.4
+    },
+    {
+      "instance": "tsp100000_uniform_16",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 225988458,
+      "reference_type": "empirical_bks",
+      "upper_bound": 225988458,
+      "lower_bound": 224493027.3
+    },
+    {
+      "instance": "tsp10000_uniform_01",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71544258,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71544258,
+      "lower_bound": 71085368.5
+    },
+    {
+      "instance": "tsp10000_uniform_02",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71951063,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71951063,
+      "lower_bound": 71453655.5
+    },
+    {
+      "instance": "tsp10000_uniform_03",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71961753,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71961753,
+      "lower_bound": 71508951.6
+    },
+    {
+      "instance": "tsp10000_uniform_04",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71642643,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71642643,
+      "lower_bound": 71157528.4
+    },
+    {
+      "instance": "tsp10000_uniform_05",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 72058728,
+      "reference_type": "empirical_bks",
+      "upper_bound": 72058728,
+      "lower_bound": 71597276.7
+    },
+    {
+      "instance": "tsp10000_uniform_06",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71762509,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71762509,
+      "lower_bound": 71293848.8
+    },
+    {
+      "instance": "tsp10000_uniform_07",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71940431,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71940431,
+      "lower_bound": 71460339.5
+    },
+    {
+      "instance": "tsp10000_uniform_08",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 72002912,
+      "reference_type": "empirical_bks",
+      "upper_bound": 72002912,
+      "lower_bound": 71521652.7
+    },
+    {
+      "instance": "tsp10000_uniform_09",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71939407,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71939407,
+      "lower_bound": 71514008.7
+    },
+    {
+      "instance": "tsp10000_uniform_10",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71690772,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71690772,
+      "lower_bound": 71235865.6
+    },
+    {
+      "instance": "tsp10000_uniform_11",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71717519,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71717519,
+      "lower_bound": 71196640.1
+    },
+    {
+      "instance": "tsp10000_uniform_12",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71514720,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71514720,
+      "lower_bound": 71011898.0
+    },
+    {
+      "instance": "tsp10000_uniform_13",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71697040,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71697040,
+      "lower_bound": 71223571.9
+    },
+    {
+      "instance": "tsp10000_uniform_14",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71557868,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71557868,
+      "lower_bound": 71070925.5
+    },
+    {
+      "instance": "tsp10000_uniform_15",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71663817,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71663817,
+      "lower_bound": 71169863.1
+    },
+    {
+      "instance": "tsp10000_uniform_16",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71554870,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71554870,
+      "lower_bound": 71077529.6
+    },
+    {
+      "instance": "tsp20000_uniform_01",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101473246,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101473246,
+      "lower_bound": 100815414.7
+    },
+    {
+      "instance": "tsp20000_uniform_02",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101559208,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101559208,
+      "lower_bound": 100880078.5
+    },
+    {
+      "instance": "tsp20000_uniform_03",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101484414,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101484414,
+      "lower_bound": 100792613.2
+    },
+    {
+      "instance": "tsp20000_uniform_04",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101166315,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101166315,
+      "lower_bound": 100506317.1
+    },
+    {
+      "instance": "tsp20000_uniform_05",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101271752,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101271752,
+      "lower_bound": 100564600.4
+    },
+    {
+      "instance": "tsp20000_uniform_06",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101717242,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101717242,
+      "lower_bound": 101042748.8
+    },
+    {
+      "instance": "tsp20000_uniform_07",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101344419,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101344419,
+      "lower_bound": 100653157.5
+    },
+    {
+      "instance": "tsp20000_uniform_08",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101372328,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101372328,
+      "lower_bound": 100674172.8
+    },
+    {
+      "instance": "tsp20000_uniform_09",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101105514,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101105514,
+      "lower_bound": 100422438.6
+    },
+    {
+      "instance": "tsp20000_uniform_10",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101443605,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101443605,
+      "lower_bound": 100787972.5
+    },
+    {
+      "instance": "tsp20000_uniform_11",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101541694,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101541694,
+      "lower_bound": 100835435.0
+    },
+    {
+      "instance": "tsp20000_uniform_12",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101272617,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101272617,
+      "lower_bound": 100591494.4
+    },
+    {
+      "instance": "tsp20000_uniform_13",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101512487,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101512487,
+      "lower_bound": 100857208.3
+    },
+    {
+      "instance": "tsp20000_uniform_14",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101317041,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101317041,
+      "lower_bound": 100668136.0
+    },
+    {
+      "instance": "tsp20000_uniform_15",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101159939,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101159939,
+      "lower_bound": 100501508.7
+    },
+    {
+      "instance": "tsp20000_uniform_16",
+      "dimension": 20000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 101546592,
+      "reference_type": "empirical_bks",
+      "upper_bound": 101546592,
+      "lower_bound": 100877577.8
+    },
+    {
+      "instance": "tsp50000_uniform_01",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160123181,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160123181,
+      "lower_bound": 159071246.8
+    },
+    {
+      "instance": "tsp50000_uniform_02",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160092708,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160092708,
+      "lower_bound": 159057879.5
+    },
+    {
+      "instance": "tsp50000_uniform_03",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160057942,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160057942,
+      "lower_bound": 159001002.4
+    },
+    {
+      "instance": "tsp50000_uniform_04",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159744080,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159744080,
+      "lower_bound": 158694182.2
+    },
+    {
+      "instance": "tsp50000_uniform_05",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160030765,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160030765,
+      "lower_bound": 158972593.8
+    },
+    {
+      "instance": "tsp50000_uniform_06",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159918759,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159918759,
+      "lower_bound": 158859473.8
+    },
+    {
+      "instance": "tsp50000_uniform_07",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159968873,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159968873,
+      "lower_bound": 158905091.6
+    },
+    {
+      "instance": "tsp50000_uniform_08",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160122965,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160122965,
+      "lower_bound": 159037495.0
+    },
+    {
+      "instance": "tsp50000_uniform_09",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159893371,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159893371,
+      "lower_bound": 158870879.8
+    },
+    {
+      "instance": "tsp50000_uniform_10",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159684261,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159684261,
+      "lower_bound": 158622360.9
+    },
+    {
+      "instance": "tsp50000_uniform_11",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159989970,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159989970,
+      "lower_bound": 158951911.0
+    },
+    {
+      "instance": "tsp50000_uniform_12",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159891679,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159891679,
+      "lower_bound": 158866777.7
+    },
+    {
+      "instance": "tsp50000_uniform_13",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160254028,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160254028,
+      "lower_bound": 159203131.4
+    },
+    {
+      "instance": "tsp50000_uniform_14",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160020308,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160020308,
+      "lower_bound": 158907604.2
+    },
+    {
+      "instance": "tsp50000_uniform_15",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 159932899,
+      "reference_type": "empirical_bks",
+      "upper_bound": 159932899,
+      "lower_bound": 158890940.0
+    },
+    {
+      "instance": "tsp50000_uniform_16",
+      "dimension": 50000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 160018616,
+      "reference_type": "empirical_bks",
+      "upper_bound": 160018616,
+      "lower_bound": 158988290.3
+    },
+    {
+      "instance": "tsp5000_uniform_01",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50989401,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50989401,
+      "lower_bound": 50666903.4
+    },
+    {
+      "instance": "tsp5000_uniform_02",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 51099241,
+      "reference_type": "empirical_bks",
+      "upper_bound": 51099241,
+      "lower_bound": 50765955.5
+    },
+    {
+      "instance": "tsp5000_uniform_03",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50755331,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50755331,
+      "lower_bound": 50395181.0
+    },
+    {
+      "instance": "tsp5000_uniform_04",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50659179,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50659179,
+      "lower_bound": 50337574.6
+    },
+    {
+      "instance": "tsp5000_uniform_05",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 51208117,
+      "reference_type": "empirical_bks",
+      "upper_bound": 51208117,
+      "lower_bound": 50868610.0
+    },
+    {
+      "instance": "tsp5000_uniform_06",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50759467,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50759467,
+      "lower_bound": 50431184.2
+    },
+    {
+      "instance": "tsp5000_uniform_07",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50836264,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50836264,
+      "lower_bound": 50539188.8
+    },
+    {
+      "instance": "tsp5000_uniform_08",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50448407,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50448407,
+      "lower_bound": 50107443.2
+    },
+    {
+      "instance": "tsp5000_uniform_09",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 51021113,
+      "reference_type": "empirical_bks",
+      "upper_bound": 51021113,
+      "lower_bound": 50703747.0
+    },
+    {
+      "instance": "tsp5000_uniform_10",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50934818,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50934818,
+      "lower_bound": 50627772.8
+    },
+    {
+      "instance": "tsp5000_uniform_11",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50976108,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50976108,
+      "lower_bound": 50628891.9
+    },
+    {
+      "instance": "tsp5000_uniform_12",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 51005431,
+      "reference_type": "empirical_bks",
+      "upper_bound": 51005431,
+      "lower_bound": 50643423.0
+    },
+    {
+      "instance": "tsp5000_uniform_13",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50862551,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50862551,
+      "lower_bound": 50544923.6
+    },
+    {
+      "instance": "tsp5000_uniform_14",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50893572,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50893572,
+      "lower_bound": 50568979.7
+    },
+    {
+      "instance": "tsp5000_uniform_15",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50537277,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50537277,
+      "lower_bound": 50209630.8
+    },
+    {
+      "instance": "tsp5000_uniform_16",
+      "dimension": 5000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 51051234,
+      "reference_type": "empirical_bks",
+      "upper_bound": 51051234,
+      "lower_bound": 50692964.0
+    }
+  ]
+}

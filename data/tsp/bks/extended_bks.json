@@ -1,0 +1,876 @@
+{
+  "schema_version": 2,
+  "dataset": "extended",
+  "artifact_retention_policy": "summary_only",
+  "artifacts_used_during_generation": true,
+  "status": "complete",
+  "expected_instance_count": 96,
+  "completed_instance_count": 96,
+  "missing_instances": [],
+  "instances": [
+    {
+      "instance": "tsp100000_clustered_01",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 114563498,
+      "reference_type": "empirical_bks",
+      "upper_bound": 114563498,
+      "lower_bound": 113718287.9
+    },
+    {
+      "instance": "tsp100000_clustered_02",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 126883189,
+      "reference_type": "empirical_bks",
+      "upper_bound": 126883189,
+      "lower_bound": 126060806.3
+    },
+    {
+      "instance": "tsp100000_clustered_03",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 124129258,
+      "reference_type": "empirical_bks",
+      "upper_bound": 124129258,
+      "lower_bound": 123301523.2
+    },
+    {
+      "instance": "tsp100000_clustered_04",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 123774248,
+      "reference_type": "empirical_bks",
+      "upper_bound": 123774248,
+      "lower_bound": 122930968.2
+    },
+    {
+      "instance": "tsp100000_clustered_05",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 119546717,
+      "reference_type": "empirical_bks",
+      "upper_bound": 119546717,
+      "lower_bound": 118658913.6
+    },
+    {
+      "instance": "tsp100000_clustered_06",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 112624842,
+      "reference_type": "empirical_bks",
+      "upper_bound": 112624842,
+      "lower_bound": 111835245.9
+    },
+    {
+      "instance": "tsp100000_clustered_07",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 129415993,
+      "reference_type": "empirical_bks",
+      "upper_bound": 129415993,
+      "lower_bound": 128526330.8
+    },
+    {
+      "instance": "tsp100000_clustered_08",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 120572844,
+      "reference_type": "empirical_bks",
+      "upper_bound": 120572844,
+      "lower_bound": 119790691.1
+    },
+    {
+      "instance": "tsp100000_clustered_09",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 124303300,
+      "reference_type": "empirical_bks",
+      "upper_bound": 124303300,
+      "lower_bound": 123484653.5
+    },
+    {
+      "instance": "tsp100000_clustered_10",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 131067033,
+      "reference_type": "empirical_bks",
+      "upper_bound": 131067033,
+      "lower_bound": 130195372.5
+    },
+    {
+      "instance": "tsp100000_clustered_11",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 113857532,
+      "reference_type": "empirical_bks",
+      "upper_bound": 113857532,
+      "lower_bound": 113091040.6
+    },
+    {
+      "instance": "tsp100000_clustered_12",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 114711270,
+      "reference_type": "empirical_bks",
+      "upper_bound": 114711270,
+      "lower_bound": 113851672.7
+    },
+    {
+      "instance": "tsp100000_clustered_13",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 108494727,
+      "reference_type": "empirical_bks",
+      "upper_bound": 108494727,
+      "lower_bound": 107822457.2
+    },
+    {
+      "instance": "tsp100000_clustered_14",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 125260359,
+      "reference_type": "empirical_bks",
+      "upper_bound": 125260359,
+      "lower_bound": 124397929.9
+    },
+    {
+      "instance": "tsp100000_clustered_15",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 116473171,
+      "reference_type": "empirical_bks",
+      "upper_bound": 116473171,
+      "lower_bound": 115702107.5
+    },
+    {
+      "instance": "tsp100000_clustered_16",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 117819957,
+      "reference_type": "empirical_bks",
+      "upper_bound": 117819957,
+      "lower_bound": 116536081.5
+    },
+    {
+      "instance": "tsp100000_explosion_01",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 99601843,
+      "reference_type": "empirical_bks",
+      "upper_bound": 99601843,
+      "lower_bound": 98963269.3
+    },
+    {
+      "instance": "tsp100000_explosion_02",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 103000988,
+      "reference_type": "empirical_bks",
+      "upper_bound": 103000988,
+      "lower_bound": 102336752.3
+    },
+    {
+      "instance": "tsp100000_explosion_03",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 109820235,
+      "reference_type": "empirical_bks",
+      "upper_bound": 109820235,
+      "lower_bound": 109062558.5
+    },
+    {
+      "instance": "tsp100000_explosion_04",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 103462952,
+      "reference_type": "empirical_bks",
+      "upper_bound": 103462952,
+      "lower_bound": 102766323.3
+    },
+    {
+      "instance": "tsp100000_explosion_05",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 105423008,
+      "reference_type": "empirical_bks",
+      "upper_bound": 105423008,
+      "lower_bound": 104707631.6
+    },
+    {
+      "instance": "tsp100000_explosion_06",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 100035970,
+      "reference_type": "empirical_bks",
+      "upper_bound": 100035970,
+      "lower_bound": 99359022.8
+    },
+    {
+      "instance": "tsp100000_explosion_07",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 95154558,
+      "reference_type": "empirical_bks",
+      "upper_bound": 95154558,
+      "lower_bound": 94490809.2
+    },
+    {
+      "instance": "tsp100000_explosion_08",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 102893158,
+      "reference_type": "empirical_bks",
+      "upper_bound": 102893158,
+      "lower_bound": 102166847.8
+    },
+    {
+      "instance": "tsp100000_explosion_09",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 96927290,
+      "reference_type": "empirical_bks",
+      "upper_bound": 96927290,
+      "lower_bound": 95862211.3
+    },
+    {
+      "instance": "tsp100000_explosion_10",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 92037891,
+      "reference_type": "empirical_bks",
+      "upper_bound": 92037891,
+      "lower_bound": 91481880.5
+    },
+    {
+      "instance": "tsp100000_explosion_11",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 146723478,
+      "reference_type": "empirical_bks",
+      "upper_bound": 146723478,
+      "lower_bound": 145745732.3
+    },
+    {
+      "instance": "tsp100000_explosion_12",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 143282583,
+      "reference_type": "empirical_bks",
+      "upper_bound": 143282583,
+      "lower_bound": 142362045.1
+    },
+    {
+      "instance": "tsp100000_explosion_13",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 104992016,
+      "reference_type": "empirical_bks",
+      "upper_bound": 104992016,
+      "lower_bound": 104302333.5
+    },
+    {
+      "instance": "tsp100000_explosion_14",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 105125970,
+      "reference_type": "empirical_bks",
+      "upper_bound": 105125970,
+      "lower_bound": 104462066.7
+    },
+    {
+      "instance": "tsp100000_explosion_15",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 121783012,
+      "reference_type": "empirical_bks",
+      "upper_bound": 121783012,
+      "lower_bound": 120954127.1
+    },
+    {
+      "instance": "tsp100000_explosion_16",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 99604377,
+      "reference_type": "empirical_bks",
+      "upper_bound": 99604377,
+      "lower_bound": 98946331.3
+    },
+    {
+      "instance": "tsp100000_implosion_01",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 184862433,
+      "reference_type": "empirical_bks",
+      "upper_bound": 184862433,
+      "lower_bound": 183617534.3
+    },
+    {
+      "instance": "tsp100000_implosion_02",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 170377940,
+      "reference_type": "empirical_bks",
+      "upper_bound": 170377940,
+      "lower_bound": 169136832.9
+    },
+    {
+      "instance": "tsp100000_implosion_03",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 205423181,
+      "reference_type": "empirical_bks",
+      "upper_bound": 205423181,
+      "lower_bound": 203932986.7
+    },
+    {
+      "instance": "tsp100000_implosion_04",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 197889456,
+      "reference_type": "empirical_bks",
+      "upper_bound": 197889456,
+      "lower_bound": 196551232.4
+    },
+    {
+      "instance": "tsp100000_implosion_05",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 217710513,
+      "reference_type": "empirical_bks",
+      "upper_bound": 217710513,
+      "lower_bound": 216213621.0
+    },
+    {
+      "instance": "tsp100000_implosion_06",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 174762099,
+      "reference_type": "empirical_bks",
+      "upper_bound": 174762099,
+      "lower_bound": 173442346.8
+    },
+    {
+      "instance": "tsp100000_implosion_07",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 157589892,
+      "reference_type": "empirical_bks",
+      "upper_bound": 157589892,
+      "lower_bound": 156341370.1
+    },
+    {
+      "instance": "tsp100000_implosion_08",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 204031626,
+      "reference_type": "empirical_bks",
+      "upper_bound": 204031626,
+      "lower_bound": 202676604.4
+    },
+    {
+      "instance": "tsp100000_implosion_09",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 192856870,
+      "reference_type": "empirical_bks",
+      "upper_bound": 192856870,
+      "lower_bound": 191503991.3
+    },
+    {
+      "instance": "tsp100000_implosion_10",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 181520583,
+      "reference_type": "empirical_bks",
+      "upper_bound": 181520583,
+      "lower_bound": 180311263.5
+    },
+    {
+      "instance": "tsp100000_implosion_11",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 217259756,
+      "reference_type": "empirical_bks",
+      "upper_bound": 217259756,
+      "lower_bound": 215794696.0
+    },
+    {
+      "instance": "tsp100000_implosion_12",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 210010404,
+      "reference_type": "empirical_bks",
+      "upper_bound": 210010404,
+      "lower_bound": 208606316.7
+    },
+    {
+      "instance": "tsp100000_implosion_13",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 173051917,
+      "reference_type": "empirical_bks",
+      "upper_bound": 173051917,
+      "lower_bound": 171787369.5
+    },
+    {
+      "instance": "tsp100000_implosion_14",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 199532671,
+      "reference_type": "empirical_bks",
+      "upper_bound": 199532671,
+      "lower_bound": 198177707.5
+    },
+    {
+      "instance": "tsp100000_implosion_15",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 171174281,
+      "reference_type": "empirical_bks",
+      "upper_bound": 171174281,
+      "lower_bound": 169881306.1
+    },
+    {
+      "instance": "tsp100000_implosion_16",
+      "dimension": 100000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 175028646,
+      "reference_type": "empirical_bks",
+      "upper_bound": 175028646,
+      "lower_bound": 173113369.8
+    },
+    {
+      "instance": "tsp10000_clustered_01",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 39705899,
+      "reference_type": "empirical_bks",
+      "upper_bound": 39705899,
+      "lower_bound": 39452687.8
+    },
+    {
+      "instance": "tsp10000_clustered_02",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 34497987,
+      "reference_type": "empirical_bks",
+      "upper_bound": 34497987,
+      "lower_bound": 34259739.7
+    },
+    {
+      "instance": "tsp10000_clustered_03",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 49024605,
+      "reference_type": "empirical_bks",
+      "upper_bound": 49024605,
+      "lower_bound": 48699571.4
+    },
+    {
+      "instance": "tsp10000_clustered_04",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 43936871,
+      "reference_type": "empirical_bks",
+      "upper_bound": 43936871,
+      "lower_bound": 43686800.2
+    },
+    {
+      "instance": "tsp10000_clustered_05",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 44471652,
+      "reference_type": "empirical_bks",
+      "upper_bound": 44471652,
+      "lower_bound": 44207064.5
+    },
+    {
+      "instance": "tsp10000_clustered_06",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 43668580,
+      "reference_type": "empirical_bks",
+      "upper_bound": 43668580,
+      "lower_bound": 43375936.2
+    },
+    {
+      "instance": "tsp10000_clustered_07",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 40171827,
+      "reference_type": "empirical_bks",
+      "upper_bound": 40171827,
+      "lower_bound": 39923289.2
+    },
+    {
+      "instance": "tsp10000_clustered_08",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 43528721,
+      "reference_type": "empirical_bks",
+      "upper_bound": 43528721,
+      "lower_bound": 43267260.7
+    },
+    {
+      "instance": "tsp10000_clustered_09",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 36139493,
+      "reference_type": "empirical_bks",
+      "upper_bound": 36139493,
+      "lower_bound": 35917529.5
+    },
+    {
+      "instance": "tsp10000_clustered_10",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 38918101,
+      "reference_type": "empirical_bks",
+      "upper_bound": 38918101,
+      "lower_bound": 38654284.0
+    },
+    {
+      "instance": "tsp10000_clustered_11",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 37705286,
+      "reference_type": "empirical_bks",
+      "upper_bound": 37705286,
+      "lower_bound": 37477889.3
+    },
+    {
+      "instance": "tsp10000_clustered_12",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 40906355,
+      "reference_type": "empirical_bks",
+      "upper_bound": 40906355,
+      "lower_bound": 40643523.4
+    },
+    {
+      "instance": "tsp10000_clustered_13",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 39325671,
+      "reference_type": "empirical_bks",
+      "upper_bound": 39325671,
+      "lower_bound": 39104802.6
+    },
+    {
+      "instance": "tsp10000_clustered_14",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 43511401,
+      "reference_type": "empirical_bks",
+      "upper_bound": 43511401,
+      "lower_bound": 43282467.1
+    },
+    {
+      "instance": "tsp10000_clustered_15",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 43550933,
+      "reference_type": "empirical_bks",
+      "upper_bound": 43550933,
+      "lower_bound": 43295428.5
+    },
+    {
+      "instance": "tsp10000_clustered_16",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 31637019,
+      "reference_type": "empirical_bks",
+      "upper_bound": 31637019,
+      "lower_bound": 31455759.5
+    },
+    {
+      "instance": "tsp10000_explosion_01",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 33284291,
+      "reference_type": "empirical_bks",
+      "upper_bound": 33284291,
+      "lower_bound": 33085970.4
+    },
+    {
+      "instance": "tsp10000_explosion_02",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 50128240,
+      "reference_type": "empirical_bks",
+      "upper_bound": 50128240,
+      "lower_bound": 49794248.8
+    },
+    {
+      "instance": "tsp10000_explosion_03",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 38086875,
+      "reference_type": "empirical_bks",
+      "upper_bound": 38086875,
+      "lower_bound": 37838270.6
+    },
+    {
+      "instance": "tsp10000_explosion_04",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 41941191,
+      "reference_type": "empirical_bks",
+      "upper_bound": 41941191,
+      "lower_bound": 41697304.2
+    },
+    {
+      "instance": "tsp10000_explosion_05",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 48000470,
+      "reference_type": "empirical_bks",
+      "upper_bound": 48000470,
+      "lower_bound": 47703231.6
+    },
+    {
+      "instance": "tsp10000_explosion_06",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 40816645,
+      "reference_type": "empirical_bks",
+      "upper_bound": 40816645,
+      "lower_bound": 40549947.4
+    },
+    {
+      "instance": "tsp10000_explosion_07",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 45331641,
+      "reference_type": "empirical_bks",
+      "upper_bound": 45331641,
+      "lower_bound": 45007300.7
+    },
+    {
+      "instance": "tsp10000_explosion_08",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 42845621,
+      "reference_type": "empirical_bks",
+      "upper_bound": 42845621,
+      "lower_bound": 42572314.0
+    },
+    {
+      "instance": "tsp10000_explosion_09",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 37114232,
+      "reference_type": "empirical_bks",
+      "upper_bound": 37114232,
+      "lower_bound": 36883606.6
+    },
+    {
+      "instance": "tsp10000_explosion_10",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 40921163,
+      "reference_type": "empirical_bks",
+      "upper_bound": 40921163,
+      "lower_bound": 40680060.6
+    },
+    {
+      "instance": "tsp10000_explosion_11",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 35778436,
+      "reference_type": "empirical_bks",
+      "upper_bound": 35778436,
+      "lower_bound": 35568486.0
+    },
+    {
+      "instance": "tsp10000_explosion_12",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 38965422,
+      "reference_type": "empirical_bks",
+      "upper_bound": 38965422,
+      "lower_bound": 38721395.4
+    },
+    {
+      "instance": "tsp10000_explosion_13",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 31299670,
+      "reference_type": "empirical_bks",
+      "upper_bound": 31299670,
+      "lower_bound": 31107429.9
+    },
+    {
+      "instance": "tsp10000_explosion_14",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 34205700,
+      "reference_type": "empirical_bks",
+      "upper_bound": 34205700,
+      "lower_bound": 33969562.4
+    },
+    {
+      "instance": "tsp10000_explosion_15",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 35906736,
+      "reference_type": "empirical_bks",
+      "upper_bound": 35906736,
+      "lower_bound": 35660501.0
+    },
+    {
+      "instance": "tsp10000_explosion_16",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 49518475,
+      "reference_type": "empirical_bks",
+      "upper_bound": 49518475,
+      "lower_bound": 49174802.6
+    },
+    {
+      "instance": "tsp10000_implosion_01",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 56518256,
+      "reference_type": "empirical_bks",
+      "upper_bound": 56518256,
+      "lower_bound": 55998724.5
+    },
+    {
+      "instance": "tsp10000_implosion_02",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 63310406,
+      "reference_type": "empirical_bks",
+      "upper_bound": 63310406,
+      "lower_bound": 62809845.3
+    },
+    {
+      "instance": "tsp10000_implosion_03",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 53220347,
+      "reference_type": "empirical_bks",
+      "upper_bound": 53220347,
+      "lower_bound": 52504706.5
+    },
+    {
+      "instance": "tsp10000_implosion_04",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 55415344,
+      "reference_type": "empirical_bks",
+      "upper_bound": 55415344,
+      "lower_bound": 54744551.6
+    },
+    {
+      "instance": "tsp10000_implosion_05",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 63207479,
+      "reference_type": "empirical_bks",
+      "upper_bound": 63207479,
+      "lower_bound": 62645768.5
+    },
+    {
+      "instance": "tsp10000_implosion_06",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 65569975,
+      "reference_type": "empirical_bks",
+      "upper_bound": 65569975,
+      "lower_bound": 64943650.1
+    },
+    {
+      "instance": "tsp10000_implosion_07",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 67146411,
+      "reference_type": "empirical_bks",
+      "upper_bound": 67146411,
+      "lower_bound": 66720709.6
+    },
+    {
+      "instance": "tsp10000_implosion_08",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 63630465,
+      "reference_type": "empirical_bks",
+      "upper_bound": 63630465,
+      "lower_bound": 62998422.6
+    },
+    {
+      "instance": "tsp10000_implosion_09",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 62220839,
+      "reference_type": "empirical_bks",
+      "upper_bound": 62220839,
+      "lower_bound": 61810966.2
+    },
+    {
+      "instance": "tsp10000_implosion_10",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 57625484,
+      "reference_type": "empirical_bks",
+      "upper_bound": 57625484,
+      "lower_bound": 57088058.9
+    },
+    {
+      "instance": "tsp10000_implosion_11",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71766963,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71766963,
+      "lower_bound": 71260657.7
+    },
+    {
+      "instance": "tsp10000_implosion_12",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 62260618,
+      "reference_type": "empirical_bks",
+      "upper_bound": 62260618,
+      "lower_bound": 61714695.8
+    },
+    {
+      "instance": "tsp10000_implosion_13",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 64385755,
+      "reference_type": "empirical_bks",
+      "upper_bound": 64385755,
+      "lower_bound": 63866175.0
+    },
+    {
+      "instance": "tsp10000_implosion_14",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 71701076,
+      "reference_type": "empirical_bks",
+      "upper_bound": 71701076,
+      "lower_bound": 71194209.6
+    },
+    {
+      "instance": "tsp10000_implosion_15",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 68716117,
+      "reference_type": "empirical_bks",
+      "upper_bound": 68716117,
+      "lower_bound": 68258030.4
+    },
+    {
+      "instance": "tsp10000_implosion_16",
+      "dimension": 10000,
+      "edge_weight_type": "EUC_2D",
+      "reference_value": 65334403,
+      "reference_type": "empirical_bks",
+      "upper_bound": 65334403,
+      "lower_bound": 64837915.6
+    }
+  ]
+}

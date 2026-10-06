@@ -1,0 +1,31 @@
+{
+  "name": "tsp10000_explosion_14",
+  "dimension": 10000,
+  "distribution": "explosion",
+  "seed": 630014,
+  "edge_weight_type": "EUC_2D",
+  "coordinate_grid": 1000000,
+  "coordinate_min": [
+    0,
+    0
+  ],
+  "coordinate_max": [
+    912158,
+    1000000
+  ],
+  "generator_family": "INViT official defaults",
+  "invit_reference": "f11a6024870036f5d7a7826e0955bd4e6dd350dd",
+  "parameters": {
+    "range_min": 0.1,
+    "range_max": 0.5,
+    "rate": 10.0,
+    "sampled_center": [
+      0.7303497195243835,
+      0.37166112661361694
+    ],
+    "sampled_radius": 0.4830660820007324,
+    "affected_nodes": 5593
+  },
+  "torch_version": "2.9.0+cu128",
+  "numpy_version": "2.2.4"
+}

@@ -1,0 +1,20 @@
+{
+  "generator": "generate_instances.py",
+  "generator_version": "1.1",
+  "base_seed": 20260909,
+  "instance": "pctsp-2k-11",
+  "dimension": 2001,
+  "customers": 2000,
+  "seed": 31454942,
+  "quota": 1.0,
+  "coordinate_scale": 1000000,
+  "prize_distribution": "uniform_[0,0.002]",
+  "penalty_distribution": "uniform_[0,0.026832815729997475]",
+  "canonical_path": "canonical/uniform/pctsp-2k-11.npz",
+  "canonical_sha256": "006be00ea9ae8b9c1f6266a8893ff5d7da32035873ebb998e9ea55664a17e293",
+  "path": "instances/uniform/pctsp-2k-11.pctsp",
+  "bytes": 74609,
+  "sha256": "24ad4464aca1de5c0dc804cd1f22062fa40fab4700257feabe5fe93bd6c33187",
+  "previous_canonical_sha256": "eab8205d0428749a008e883f0f3a5eb9b2f7138457327d6f819ff6574ea39c2b",
+  "canonical_revision_reason": "regenerated_from_frozen_seed_with_current_generator"
+}
